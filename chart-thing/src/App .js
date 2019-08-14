@@ -4,7 +4,8 @@ import { Line, defaults } from 'react-chartjs-2';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { tableDataDamn } from "./datafotable";
-import Subscribe from 'react-observable-subscribe';
+// import Subscribe from 'react-observable-subscribe';
+import { Observable } from 'rxjs';
 
 // import { sendEvents } from '../../server/server';
 
@@ -13,15 +14,33 @@ defaults.global.maintainAspectRatio = false
 class App extends Component {
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
     this.state = {
-      data: [22, 19, 27, 23, 22, 24, 17, 25, 23, 24, 20, 19],
+      data: [],
       data2: tableDataDamn()
     }
-    // this.eventSource = new EventSource('http://localhost:3000/');
-    // this.eventSource.onmessage = function (event) {
-    //   console.log(event.data);
-    //   this.myDiv.value += event.data + "<br>";
-    // }
+    this.data = [22, 19, 27, 23, 22, 24, 17, 25]
+    // const observable = Observable.create(observer => {
+    //   this.eventSource = new EventSource('http://localhost:3000/');
+    //   this.eventSource.onmessage = x => observer.next(this.data.push(x.data));
+    //   this.eventSource.onerror = x => observer.error(x);
+    // })
+    const foo = new Observable(subscriber => {
+      console.log('hello m9');
+      subscriber.next(30);
+      setTimeout(() => {
+        subscriber.next(31);
+      }, 2000);
+      setTimeout(() => {
+        subscriber.next(35);
+      }, 2000);
+      subscriber.complete();
+    });
+
+    foo.subscribe(x => {
+      this.data.push(x);
+      console.log(this.data);
+    });
 
     this.columns = [
       {
@@ -48,7 +67,7 @@ class App extends Component {
       datasets: [
         {
           label: 'Temperature',
-          data: [22, 19, 27, 23, 22, 24, 17, 25, 23, 24, 20, 19],
+          data: this.data,
           fill: false,          // Don't fill area under the line
           borderColor: 'green'  // Line color
         }
@@ -70,11 +89,7 @@ class App extends Component {
             columns={this.columns}
           />
         </div>
-        <div>
-          <Subscribe>
-            {this.props.stream}
-          </Subscribe>
-        </div>
+        <div ref={this.myRef} />;
       </div>
     );
   }
