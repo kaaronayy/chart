@@ -1,0 +1,48 @@
+- ReactJS
+	- Interfaces
+	- Single Page Applications
+	- RESTful API
+	- Multiple components
+	- JSON-Server
+- MySQL
+- Docker
+- Cloud based solution
+
+Interfaces instead of Inheritance
+Agile >> Sprints
+
+Testing
+Planning > Paper, Documents, Architecture
+Asnychronous calls using Generators
+Bit Bucket
+react-chartjs-2
+
+Gantt Chart?
+NoSQL backup MongoDB
+React fragment <>
+URL Web paths need to be streamlnied and use of slugs, 
+
+Story Mapping the User Stories
+	[steps]		[steps]
+	[details]	[details]
+
+ 
+Browser Node <------> Web Server Host <-------> Application Server Host <------> DB Host
+    HTML/JS  <------>     Python      <------->      Python             <------>  SQL
+
+RedHat
+user: user22
+password: openshift
+
+
+Flask apps start on 5000, OCP wants it on 8080 so need to set it to 8080 :
+if __name__ == '__main__':
+	app.run(port=****, threaded=True)
+
+SSE = Server-Sent Events
+Observables
+
+wiki:
+https://deliveringtechnology2018.atlassian.net/wiki/spaces/CS2D/pages/688259107/User+Requirements
+user: db.grad@celestial.co.uk
+password; db.grad@2019prog

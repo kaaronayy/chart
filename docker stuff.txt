@@ -1,0 +1,30 @@
+docker is a virtual machine 
+to create a container, you need a template first - we call these images
+run applications/containers as daemons
+docker run -dit --name selllinux ubuntu 
+//creates a container of the image of ubuntu
+
+do stuff in the container by entering the container with
+docker exec -it __container id or name___
+
+docker exec -it __container id__ bash
+//enters into shell to configure inside the container
+
+to check if it is running you check the browser at the IP address that is shown to you when you start the docker machine (docker-machine start)
+
+containers can run on port xy but they need to be exposed to a port locally to be visible i.e. 
+
+docker exec -dit -p 8080:xy 
+
+
+need a file called app.py that imports teh python file and has an instantiator to render the python file
+
+
+
+
+
+
+Everything needs a route
+needs a Dockerfile
+needs an app.py
+need to expose the port 
